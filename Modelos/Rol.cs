@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -22,6 +23,39 @@ namespace Proyecto1.Modelos
             IdRol = idRol;
             NombreRol = nombreRol;
             DescripcionRol = descripcionRol;
+        }
+
+        public List<Rol> GetRoles(string sql)
+        {
+           List<Rol> _Listroles = null;
+           ConnectionBD objConnectionBD = new ConnectionBD();
+
+            using( var conn = objConnectionBD.DataSource())
+            {
+                
+                conn.Open();
+                    objConnectionBD.ConnectOpened();
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {   
+                    _Listroles = new List<Rol>();
+                    while (reader.Read())
+                    { 
+                        {
+                            
+                            int idr = reader.GetInt32(0);
+                            string namer = reader.GetString(1);
+                            string desr = reader.GetString(2);
+                            Rol rol = new Rol(idr, namer, desr);
+                            _Listroles.Add(rol);
+                        }
+                       
+                    }
+                }            
+            }
+
+            return _Listroles;
         }
 
         // Getters y Setters

@@ -36,22 +36,24 @@
             textBox5 = new TextBox();
             textBox6 = new TextBox();
             button1 = new Button();
+            comboBox1 = new ComboBox();
+            label2 = new Label();
             SuspendLayout();
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(298, 99);
+            textBox1.Location = new Point(47, 87);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(236, 26);
             textBox1.TabIndex = 0;
-            textBox1.Text = "Nombre1 Usuario";
+            textBox1.Text = "Codigo Usuario";
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(341, 36);
+            label1.Location = new Point(83, 32);
             label1.Name = "label1";
             label1.Size = new Size(150, 27);
             label1.TabIndex = 1;
@@ -60,47 +62,49 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(298, 141);
+            textBox2.Location = new Point(47, 129);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(236, 26);
             textBox2.TabIndex = 2;
-            textBox2.Text = "Nombre2 Usuario";
+            textBox2.Text = "Nombre Usuario";
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(298, 186);
+            textBox3.Location = new Point(47, 174);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(236, 26);
             textBox3.TabIndex = 3;
-            textBox3.Text = "Apellido1 Usuario";
+            textBox3.Text = "Apellido Usuario";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(298, 231);
+            textBox4.Location = new Point(47, 219);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(236, 26);
             textBox4.TabIndex = 4;
-            textBox4.Text = "Apellido2 Usuario";
+            textBox4.Text = "Correo Usuario";
+            textBox4.TextChanged += textBox4_TextChanged;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(298, 276);
+            textBox5.Location = new Point(47, 264);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(236, 26);
             textBox5.TabIndex = 5;
-            textBox5.Text = "Correo Usuario";
+            textBox5.Text = "Telefono Usuario";
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(298, 324);
+            textBox6.Location = new Point(47, 312);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(236, 26);
             textBox6.TabIndex = 6;
-            textBox6.Text = "Tipo Usuario";
+            textBox6.Text = "Programa Usuario";
             // 
             // button1
             // 
-            button1.Location = new Point(321, 373);
+            button1.Location = new Point(384, 174);
             button1.Name = "button1";
             button1.Size = new Size(153, 65);
             button1.TabIndex = 7;
@@ -108,11 +112,34 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // comboBox1
+            // 
+            comboBox1.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(620, 95);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(182, 48);
+            comboBox1.TabIndex = 8;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(647, 59);
+            label2.Name = "label2";
+            label2.Size = new Size(118, 21);
+            label2.TabIndex = 9;
+            label2.Text = "Sleccione Rol";
+            label2.Click += label2_Click;
+            // 
             // UI_AddUsuario
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 450);
+            Controls.Add(label2);
+            Controls.Add(comboBox1);
             Controls.Add(button1);
             Controls.Add(textBox6);
             Controls.Add(textBox5);
@@ -124,6 +151,7 @@
             Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "UI_AddUsuario";
             Text = "UI_AddUsuario";
+            Load += ShowRoles;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -138,5 +166,7 @@
         private TextBox textBox5;
         private TextBox textBox6;
         private Button button1;
+        private ComboBox comboBox1;
+        private Label label2;
     }
 }

@@ -8,11 +8,14 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Diagnostics;
+using Org.BouncyCastle.Pqc.Crypto.Frodo;
 
 namespace Proyecto1.Views
 {
     public partial class UI_AddUsuario : Form
     {
+        List<Rol> _Listroles = null;
         public UI_AddUsuario()
         {
             InitializeComponent();
@@ -30,21 +33,76 @@ namespace Proyecto1.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            string nombre1Usuario = textBox1.Text;
-            string nombre2Usuario = textBox2.Text;
-            string apellido1Usuario = textBox3.Text;
-            string apellido2Usuario = textBox4.Text;
-            string correoUsuario = textBox5.Text;
-            string tipoUsuario = textBox6.Text;
 
-            Usuario objUsuario = new Usuario(nombre1Usuario, nombre2Usuario,
-                                     apellido1Usuario, apellido2Usuario,
-                                     correoUsuario, tipoUsuario);
+            string codigoE = textBox1.Text;
+            string nombre1Usuario = textBox2.Text;
+            string apellido1Usuario = textBox3.Text;
+            string correoUsuario = textBox4.Text;
+            string telefonoE = textBox5.Text;
+            string programa = textBox6.Text;
+            int idRolFK = 0;
+
+            string rolSeleccionado = comboBox1.SelectedItem.ToString();
+            for (int i = 0; i < _Listroles.Count; i++)
+            {
+                if (rolSeleccionado.Equals(_Listroles[i].NombreRol))
+                {
+                    idRolFK = _Listroles[i].IdRol;
+
+                }
+            }
+
+            Usuario objUsuario = new Usuario(codigoE, nombre1Usuario,
+                                     apellido1Usuario, correoUsuario,
+                                     telefonoE, programa, idRolFK);
 
             ControllerUsuario objCUsuario = new ControllerUsuario();
 
             bool resultado = objCUsuario.InsertUsuario(objUsuario);
+
+            if (resultado)
+            {
+                MessageBox.Show("Usuario agregada correctamente");
+            }
+            else
+            {
+                MessageBox.Show("Error al agregar usuario");
+            }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ShowRoles(object sender, EventArgs e)
+        {
+            
+
+            ControllerRol objCRol = new ControllerRol();
+            _Listroles = objCRol.GetRoles();
+
+            foreach (Rol rol in _Listroles)
+            {
+                comboBox1.Items.Add(rol.NombreRol);
+            }
+
+            //Debug.WriteLine("Mostrando roles...");
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
