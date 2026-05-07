@@ -134,7 +134,7 @@
             // 
             comboBox1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(310, 171);
+            comboBox1.Location = new Point(310, 142);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(182, 31);
             comboBox1.TabIndex = 8;
@@ -144,7 +144,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 13.8F);
-            label2.Location = new Point(312, 133);
+            label2.Location = new Point(312, 112);
             label2.Name = "label2";
             label2.Size = new Size(180, 27);
             label2.TabIndex = 9;
