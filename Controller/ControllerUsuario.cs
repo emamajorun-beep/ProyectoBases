@@ -27,5 +27,20 @@ namespace Proyecto1.Controller
             ConnectionBD objConnectionBD = new ConnectionBD();
             return objConnectionBD.ExecuteQuery(sql);
         }
+
+        internal bool UpdateUsuario(int idUsuario, Usuario objUsuario)
+        {
+            string sql = $"UPDATE `pr1 ex`.`usuarios` SET " +
+                $"codigoE = '{objUsuario.CodigoE}', " +
+                $"nombre1Usuario = '{objUsuario.Nombre1Usuario}', " +
+                $"apellido1Usuario = '{objUsuario.Apellido1Usuario}', " +
+                $"correoUsuario = '{objUsuario.CorreoUsuario}', " +
+                $"telefonoE = '{objUsuario.TelefonoE}', " +
+                $"programa = '{objUsuario.Programa}', " +
+                $"idRolFK = {objUsuario.IdRolFK} " +
+                $"WHERE idUsuario = {idUsuario}";
+            ConnectionBD objConnectionBD = new ConnectionBD();
+            return objConnectionBD.ExecuteQuery(sql);
+        }
     }
 }
