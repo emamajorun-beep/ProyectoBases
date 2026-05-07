@@ -38,6 +38,8 @@
             button1 = new Button();
             comboBox1 = new ComboBox();
             label2 = new Label();
+            textBoxDeleteId = new TextBox();
+            buttonDelete = new Button();
             SuspendLayout();
             // 
             // textBox1
@@ -132,12 +134,34 @@
             label2.TabIndex = 9;
             label2.Text = "Sleccione Rol";
             label2.Click += label2_Click;
-            // 
+            //
+            // textBoxDeleteId
+            //
+            textBoxDeleteId.Location = new Point(620, 200);
+            textBoxDeleteId.Name = "textBoxDeleteId";
+            textBoxDeleteId.Size = new Size(182, 26);
+            textBoxDeleteId.TabIndex = 10;
+            textBoxDeleteId.Text = "ID Usuario a Eliminar";
+            //
+            // buttonDelete
+            //
+            buttonDelete.BackColor = System.Drawing.Color.FromArgb(192, 0, 0);
+            buttonDelete.ForeColor = System.Drawing.Color.White;
+            buttonDelete.Location = new Point(620, 245);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(182, 50);
+            buttonDelete.TabIndex = 11;
+            buttonDelete.Text = "Delete Usuario";
+            buttonDelete.UseVisualStyleBackColor = false;
+            buttonDelete.Click += buttonDelete_Click;
+            //
             // UI_AddUsuario
-            // 
+            //
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 450);
+            Controls.Add(buttonDelete);
+            Controls.Add(textBoxDeleteId);
             Controls.Add(label2);
             Controls.Add(comboBox1);
             Controls.Add(button1);
@@ -168,5 +192,7 @@
         private Button button1;
         private ComboBox comboBox1;
         private Label label2;
+        private TextBox textBoxDeleteId;
+        private Button buttonDelete;
     }
 }

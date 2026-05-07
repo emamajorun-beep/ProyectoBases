@@ -20,5 +20,12 @@ namespace Proyecto1.Controller
 
             return resultado;
         }
+
+        internal bool DeleteUsuario(int idUsuario)
+        {
+            string sql = $"DELETE FROM `pr1 ex`.`usuarios` WHERE idUsuario = {idUsuario}";
+            ConnectionBD objConnectionBD = new ConnectionBD();
+            return objConnectionBD.ExecuteQuery(sql);
+        }
     }
 }
