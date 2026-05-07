@@ -87,14 +87,13 @@ namespace Proyecto1.Views
 
         private void ShowRoles(object sender, EventArgs e)
         {
-            
-
             ControllerRol objCRol = new ControllerRol();
             _Listroles = objCRol.GetRoles();
 
             foreach (Rol rol in _Listroles)
             {
                 comboBox1.Items.Add(rol.NombreRol);
+                comboBoxUpdateRol.Items.Add(rol.NombreRol);
             }
 
             //Debug.WriteLine("Mostrando roles...");
@@ -103,6 +102,81 @@ namespace Proyecto1.Views
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(textBoxUpdateId.Text, out int idUsuario))
+            {
+                MessageBox.Show("Por favor ingrese un ID válido (número entero).");
+                return;
+            }
+
+            if (comboBoxUpdateRol.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor seleccione un rol.");
+                return;
+            }
+
+            int idRolFK = 0;
+            string rolSeleccionado = comboBoxUpdateRol.SelectedItem.ToString();
+            for (int i = 0; i < _Listroles.Count; i++)
+            {
+                if (rolSeleccionado.Equals(_Listroles[i].NombreRol))
+                    idRolFK = _Listroles[i].IdRol;
+            }
+
+            Usuario objUsuario = new Usuario(
+                textBoxUpdateCodigo.Text,
+                textBoxUpdateNombre.Text,
+                textBoxUpdateApellido.Text,
+                textBoxUpdateCorreo.Text,
+                textBoxUpdateTelefono.Text,
+                textBoxUpdatePrograma.Text,
+                idRolFK);
+
+            ControllerUsuario objCUsuario = new ControllerUsuario();
+            bool resultado = objCUsuario.UpdateUsuario(idUsuario, objUsuario);
+
+            if (resultado)
+            {
+                MessageBox.Show("Usuario actualizado correctamente.");
+            }
+            else
+            {
+                MessageBox.Show("Error al actualizar el usuario. Verifique que el ID exista.");
+            }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(textBoxDeleteId.Text, out int idUsuario))
+            {
+                MessageBox.Show("Por favor ingrese un ID válido (número entero).");
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show(
+                $"¿Está seguro que desea eliminar el usuario con ID {idUsuario}? Esta acción no se puede deshacer.",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                ControllerUsuario objCUsuario = new ControllerUsuario();
+                bool resultado = objCUsuario.DeleteUsuario(idUsuario);
+
+                if (resultado)
+                {
+                    MessageBox.Show("Usuario eliminado correctamente.");
+                    textBoxDeleteId.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el usuario. Verifique que el ID exista.");
+                }
+            }
         }
     }
 }
