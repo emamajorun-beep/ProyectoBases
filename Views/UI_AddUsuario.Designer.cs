@@ -40,6 +40,17 @@
             label2 = new Label();
             textBoxDeleteId = new TextBox();
             buttonDelete = new Button();
+            labelUpdate = new Label();
+            textBoxUpdateId = new TextBox();
+            textBoxUpdateCodigo = new TextBox();
+            textBoxUpdateNombre = new TextBox();
+            textBoxUpdateApellido = new TextBox();
+            textBoxUpdateCorreo = new TextBox();
+            textBoxUpdateTelefono = new TextBox();
+            textBoxUpdatePrograma = new TextBox();
+            comboBoxUpdateRol = new ComboBox();
+            labelUpdateRol = new Label();
+            buttonUpdate = new Button();
             SuspendLayout();
             // 
             // textBox1
@@ -155,11 +166,117 @@
             buttonDelete.UseVisualStyleBackColor = false;
             buttonDelete.Click += buttonDelete_Click;
             //
+            // labelUpdate
+            //
+            labelUpdate.AutoSize = true;
+            labelUpdate.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelUpdate.Location = new Point(83, 380);
+            labelUpdate.Name = "labelUpdate";
+            labelUpdate.TabIndex = 12;
+            labelUpdate.Text = "Update Usuario";
+            //
+            // textBoxUpdateId
+            //
+            textBoxUpdateId.Location = new Point(47, 420);
+            textBoxUpdateId.Name = "textBoxUpdateId";
+            textBoxUpdateId.Size = new Size(236, 26);
+            textBoxUpdateId.TabIndex = 13;
+            textBoxUpdateId.Text = "ID Usuario a Actualizar";
+            //
+            // textBoxUpdateCodigo
+            //
+            textBoxUpdateCodigo.Location = new Point(47, 460);
+            textBoxUpdateCodigo.Name = "textBoxUpdateCodigo";
+            textBoxUpdateCodigo.Size = new Size(236, 26);
+            textBoxUpdateCodigo.TabIndex = 14;
+            textBoxUpdateCodigo.Text = "Nuevo Codigo";
+            //
+            // textBoxUpdateNombre
+            //
+            textBoxUpdateNombre.Location = new Point(47, 500);
+            textBoxUpdateNombre.Name = "textBoxUpdateNombre";
+            textBoxUpdateNombre.Size = new Size(236, 26);
+            textBoxUpdateNombre.TabIndex = 15;
+            textBoxUpdateNombre.Text = "Nuevo Nombre";
+            //
+            // textBoxUpdateApellido
+            //
+            textBoxUpdateApellido.Location = new Point(47, 540);
+            textBoxUpdateApellido.Name = "textBoxUpdateApellido";
+            textBoxUpdateApellido.Size = new Size(236, 26);
+            textBoxUpdateApellido.TabIndex = 16;
+            textBoxUpdateApellido.Text = "Nuevo Apellido";
+            //
+            // textBoxUpdateCorreo
+            //
+            textBoxUpdateCorreo.Location = new Point(310, 420);
+            textBoxUpdateCorreo.Name = "textBoxUpdateCorreo";
+            textBoxUpdateCorreo.Size = new Size(236, 26);
+            textBoxUpdateCorreo.TabIndex = 17;
+            textBoxUpdateCorreo.Text = "Nuevo Correo";
+            //
+            // textBoxUpdateTelefono
+            //
+            textBoxUpdateTelefono.Location = new Point(310, 460);
+            textBoxUpdateTelefono.Name = "textBoxUpdateTelefono";
+            textBoxUpdateTelefono.Size = new Size(236, 26);
+            textBoxUpdateTelefono.TabIndex = 18;
+            textBoxUpdateTelefono.Text = "Nuevo Telefono";
+            //
+            // textBoxUpdatePrograma
+            //
+            textBoxUpdatePrograma.Location = new Point(310, 500);
+            textBoxUpdatePrograma.Name = "textBoxUpdatePrograma";
+            textBoxUpdatePrograma.Size = new Size(236, 26);
+            textBoxUpdatePrograma.TabIndex = 19;
+            textBoxUpdatePrograma.Text = "Nuevo Programa";
+            //
+            // labelUpdateRol
+            //
+            labelUpdateRol.AutoSize = true;
+            labelUpdateRol.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelUpdateRol.Location = new Point(590, 400);
+            labelUpdateRol.Name = "labelUpdateRol";
+            labelUpdateRol.TabIndex = 20;
+            labelUpdateRol.Text = "Nuevo Rol";
+            //
+            // comboBoxUpdateRol
+            //
+            comboBoxUpdateRol.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboBoxUpdateRol.FormattingEnabled = true;
+            comboBoxUpdateRol.Location = new Point(580, 425);
+            comboBoxUpdateRol.Name = "comboBoxUpdateRol";
+            comboBoxUpdateRol.Size = new Size(220, 27);
+            comboBoxUpdateRol.TabIndex = 21;
+            //
+            // buttonUpdate
+            //
+            buttonUpdate.BackColor = System.Drawing.Color.FromArgb(0, 102, 204);
+            buttonUpdate.ForeColor = System.Drawing.Color.White;
+            buttonUpdate.Location = new Point(580, 480);
+            buttonUpdate.Name = "buttonUpdate";
+            buttonUpdate.Size = new Size(220, 55);
+            buttonUpdate.TabIndex = 22;
+            buttonUpdate.Text = "Update Usuario";
+            buttonUpdate.UseVisualStyleBackColor = false;
+            buttonUpdate.Click += buttonUpdate_Click;
+            //
             // UI_AddUsuario
             //
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(900, 450);
+            ClientSize = new Size(900, 620);
+            Controls.Add(buttonUpdate);
+            Controls.Add(comboBoxUpdateRol);
+            Controls.Add(labelUpdateRol);
+            Controls.Add(textBoxUpdatePrograma);
+            Controls.Add(textBoxUpdateTelefono);
+            Controls.Add(textBoxUpdateCorreo);
+            Controls.Add(textBoxUpdateApellido);
+            Controls.Add(textBoxUpdateNombre);
+            Controls.Add(textBoxUpdateCodigo);
+            Controls.Add(textBoxUpdateId);
+            Controls.Add(labelUpdate);
             Controls.Add(buttonDelete);
             Controls.Add(textBoxDeleteId);
             Controls.Add(label2);
@@ -194,5 +311,16 @@
         private Label label2;
         private TextBox textBoxDeleteId;
         private Button buttonDelete;
+        private Label labelUpdate;
+        private TextBox textBoxUpdateId;
+        private TextBox textBoxUpdateCodigo;
+        private TextBox textBoxUpdateNombre;
+        private TextBox textBoxUpdateApellido;
+        private TextBox textBoxUpdateCorreo;
+        private TextBox textBoxUpdateTelefono;
+        private TextBox textBoxUpdatePrograma;
+        private Label labelUpdateRol;
+        private ComboBox comboBoxUpdateRol;
+        private Button buttonUpdate;
     }
 }
