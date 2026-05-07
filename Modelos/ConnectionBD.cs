@@ -1,7 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
-using MySql.Data.MySqlClient;
 
 namespace Proyecto1.Modelos
 {
@@ -50,6 +51,27 @@ namespace Proyecto1.Modelos
                 ConnectClosed();
             }
             return result;
+        }
+        public DataTable ExecuteQuerySelect(string sql)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                ConnectOpened();
+                MySqlCommand cmd = new MySqlCommand(sql, connManager);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                adapter.Fill(dt);
+            }
+            catch (Exception w)
+            {
+                Console.WriteLine("ERROOOOOOR " + w.Message);
+                MessageBox.Show("Error: " + w.Message);
+            }
+            finally
+            {
+                ConnectClosed();
+            }
+            return dt;
         }
     }
 }
