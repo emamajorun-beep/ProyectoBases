@@ -104,5 +104,36 @@ namespace Proyecto1.Views
         {
 
         }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(textBoxDeleteId.Text, out int idUsuario))
+            {
+                MessageBox.Show("Por favor ingrese un ID válido (número entero).");
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show(
+                $"¿Está seguro que desea eliminar el usuario con ID {idUsuario}? Esta acción no se puede deshacer.",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                ControllerUsuario objCUsuario = new ControllerUsuario();
+                bool resultado = objCUsuario.DeleteUsuario(idUsuario);
+
+                if (resultado)
+                {
+                    MessageBox.Show("Usuario eliminado correctamente.");
+                    textBoxDeleteId.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el usuario. Verifique que el ID exista.");
+                }
+            }
+        }
     }
 }
