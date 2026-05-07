@@ -177,6 +177,48 @@ namespace Proyecto1.Views
                     MessageBox.Show("Error al eliminar el usuario. Verifique que el ID exista.");
                 }
             }
+
+        }
+        private void buttonBuscar_Click_1(object sender, EventArgs e)
+        {
+            if (!int.TryParse(textBoxBuscarId.Text, out int idUsuario))
+            {
+                MessageBox.Show("Por favor ingrese un ID válido (número entero).");
+                return;
+            }
+
+            ControllerUsuario objCUsuario = new ControllerUsuario();
+            Usuario usuario = objCUsuario.GetUsuarioById(idUsuario);
+
+            if (usuario != null)
+            {
+                string detalle =
+                    $"ID:        {usuario.IdUsuario}\n" +
+                    $"Código:    {usuario.CodigoE}\n" +
+                    $"Nombre:    {usuario.Nombre1Usuario}\n" +
+                    $"Apellido:  {usuario.Apellido1Usuario}\n" +
+                    $"Correo:    {usuario.CorreoUsuario}\n" +
+                    $"Teléfono:  {usuario.TelefonoE}\n" +
+                    $"Programa:  {usuario.Programa}";
+
+                MessageBox.Show(detalle, $"Usuario ID {idUsuario}",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("No se encontró ningún usuario con ese ID.");
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelUpdate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
+
